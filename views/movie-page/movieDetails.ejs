@@ -1,0 +1,68 @@
+ <!-- Overlay with movie backdrop -->
+ <% if (movie.backdrop_path) { %>
+  <div class="overlay" style="
+    background-image: url('https://image.tmdb.org/t/p/original<%= movie.backdrop_path %>');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.1;
+  "></div>
+<% } %>
+
+<div class="details-top">
+    <div>
+      <% if (movie.poster_path) { %>
+        <img
+          src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>"
+          class="card-img-top"
+          alt="<%= movie.title %>"
+        />
+      <% } else { %>
+        <img
+          src="../images/no-image.jpg"
+          class="card-img-top"
+          alt="<%= movie.title %>"
+        />
+      <% } %>
+    </div>
+    <div>
+      <h2><%= movie.title %></h2>
+      <p>
+        <i class="fas fa-star text-primary"></i>
+        <%= movie.vote_average.toFixed(1) %> / 10
+      </p>
+      <p class="text-muted">Release Date: <%= movie.release_date %></p>
+      <p>
+        <%= movie.overview %>
+      </p>
+      <h5>Genres</h5>
+      <ul class="list-group">
+        <% movie.genres.forEach(genre => { %>
+          <li><%= genre.name %></li>
+        <% }); %>
+      </ul>
+      <a href="<%= movie.homepage %>" target="_blank" class="btn">Visit Movie Homepage</a>
+    </div>
+  </div>
+  <div class="details-bottom">
+    <h2>Movie Info</h2>
+    <ul>
+      <li><span class="text-secondary">Budget:</span> <%= movie.budget %></li>
+      <li><span class="text-secondary">Revenue:</span> <%= movie.revenue %></li>
+      <li><span class="text-secondary">Runtime:</span> <%= movie.runtime %> minutes</li>
+      <li><span class="text-secondary">Status:</span> <%= movie.status %></li>
+    </ul>
+    <h4>Production Companies</h4>
+    <div class="list-group">
+      <% movie.production_companies.forEach(company => { %>
+        <span><%= company.name %></span>
+      <% }); %>
+    </div>
+  </div>

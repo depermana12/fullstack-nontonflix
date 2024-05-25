@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+    <title>Flixx | Search Movies & Shows</title>
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+
+    <!-- Search Movies -->
+    <%- include('../partials/search') %>
+
+    <!-- Search Results -->
+    <section id="search-results-wrapper" class="container">
+      <heading id="search-results-heading"></heading>
+      <div id="search-results" class="grid">
+        <%- include('searchResults') %>
+      </div>
+      <div id="pagination"></div>
+    </section>
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+
+    <div class="spinner"></div>
+  </body>
+</html>
